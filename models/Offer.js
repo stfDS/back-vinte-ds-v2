@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
+import { model, Schema } from "mongoose"
 
-const Offer = mongoose.model("Offer", {
+const Offer = model("Offer", {
   product_name: { type: String, required: true },
   product_description: String,
   product_price: { type: Number, required: true },
   product_details: Array,
-  product_image: { type: mongoose.Schema.Types.Mixed, default: {} },
+  product_image: { type: Schema.Types.Mixed, default: {} },
   product_pictures: Array,
   product_date: { type: Date, default: Date.now },
   owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-});
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
+})
 
-module.exports = Offer;
+export default Offer

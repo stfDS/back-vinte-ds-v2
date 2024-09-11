@@ -1,35 +1,35 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const cloudinary = require("cloudinary").v2;
+import express, { json } from "express"
+import cookieParser from "cookie-parser"
+import { v2 as cloudinary } from "cloudinary"
 
-const cors = require("cors");
-const app = express();
+import cors from "cors"
+const app = express()
 
-require("dotenv").config();
+require("dotenv").config()
 
-require("./database/database.conection");
+import "./database/database.conection"
 
 const cloudinaryConfig = cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true,
-});
+  secure: true
+})
 
 const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200,
-  origin: process.env.ORIGIN,
-};
+  origin: process.env.ORIGIN
+}
 
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(json())
+app.use(cookieParser())
+app.use(cors(corsOptions))
 
-app.get("/", (req, res) => res.send("Hello World!"));
+app.get("/", (req, res) => res.send("Hello World!"))
 
 app.all("*", (req, res) => {
-  res.status(404).json({ message: "This route does not exist" });
-});
+  res.status(404).json({ message: "This route does not exist" })
+})
 
-app.listen(process.env.PORT, () => console.log("Server Started"));
+app.listen(process.env.PORT, () => console.log("Server Started"))

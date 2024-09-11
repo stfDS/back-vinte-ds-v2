@@ -1,0 +1,20 @@
+{
+  "semi": false,
+  "trailingComma": "none",
+  "singleQuote": false,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "endOfLine": "auto",
+  "no-multiple-empty-lines": [
+    "error",
+    {
+      "max": 1,
+      "maxEOF": 1
+    }
+  ]
+}

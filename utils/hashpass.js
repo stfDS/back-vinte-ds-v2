@@ -1,23 +1,23 @@
-const argon2 = require("argon2");
+import { hash as _hash, argon2id, verify } from "argon2"
 
 async function hashPassword(password) {
   try {
-    const hash = await argon2.hash(password, {
-      type: argon2.argon2id,
-    });
-    return hash;
+    const hash = await _hash(password, {
+      type: argon2id
+    })
+    return hash
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 }
 
 async function checkPassword(hash, password) {
   try {
-    const match = await argon2.verify(hash, password);
-    return match;
+    const match = await verify(hash, password)
+    return match
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 }
 
-module.exports = { hashPassword, checkPassword };
+export default { hashPassword, checkPassword }
