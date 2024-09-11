@@ -10,8 +10,7 @@ const Offer = model("Offer", {
   product_date: { type: Date, default: Date.now },
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true
+    ref: "User"
   }
 })
 
