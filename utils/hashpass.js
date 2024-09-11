@@ -11,7 +11,7 @@ async function hashPassword(password) {
   }
 }
 
-async function verifyPassword(hash, password) {
+async function checkPassword(hash, password) {
   try {
     const match = await argon2.verify(hash, password);
     return match;
@@ -20,4 +20,4 @@ async function verifyPassword(hash, password) {
   }
 }
 
-module.exports = { hashPassword, verifyPassword };
+module.exports = { hashPassword, checkPassword };
