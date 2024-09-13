@@ -1,4 +1,7 @@
 import { connect } from "mongoose"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const database = connect(process.env.MONGODB_URL)
   .then(() => {
