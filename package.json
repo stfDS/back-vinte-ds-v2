@@ -2,9 +2,11 @@
   "name": "back-vinte-ds-v2",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -22,5 +24,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.1",
     "stripe": "^16.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.10.0"
   }
 }

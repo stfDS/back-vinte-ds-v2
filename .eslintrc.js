@@ -1,7 +1,6 @@
 module.exports = {
   env: {
     browser: true,
-    commonjs: true,
     es2021: true,
     node: true
   },
@@ -13,12 +12,13 @@ module.exports = {
       },
       files: [".eslintrc.{js,cjs}"],
       parserOptions: {
-        sourceType: "script"
+        sourceType: "module" // Utiliser "module" pour les ESM
       }
     }
   ],
   parserOptions: {
-    ecmaVersion: "latest"
+    ecmaVersion: "latest",
+    sourceType: "module" // Changer "script" en "module" pour les modules ECMAScript
   },
   rules: {
     quotes: ["warn", "double"],

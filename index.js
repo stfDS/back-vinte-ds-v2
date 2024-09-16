@@ -1,20 +1,16 @@
 import express, { json } from "express"
 import cookieParser from "cookie-parser"
-import { v2 as cloudinary } from "cloudinary"
-
 import cors from "cors"
+import dotenv from "dotenv"
+
 const app = express()
 
-require("dotenv").config()
+dotenv.config()
 
-import "./database/database.conection"
-
-const cloudinaryConfig = cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true
-})
+import "./data/database.connection.js"
+import "./data/cloudinary.config.js"
+import offersRouter from "./routes/Offer.js"
+import userRouter from "./routes/User.js"
 
 const corsOptions = {
   credentials: true,
@@ -26,7 +22,8 @@ app.use(json())
 app.use(cookieParser())
 app.use(cors(corsOptions))
 
-app.get("/", (req, res) => res.send("Hello World!"))
+app.use(offersRouter)
+app.use(userRouter)
 
 app.all("*", (req, res) => {
   res.status(404).json({ message: "This route does not exist" })
