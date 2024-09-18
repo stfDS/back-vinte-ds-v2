@@ -68,6 +68,18 @@ offersRouter.get("/offers", async (req, res) => {
   }
 })
 
+offersRouter.get("/offer/:id", async (req, res) => {
+  try {
+    const offer = await Offer.findById(req.params.id).populate(
+      "owner",
+      "account _id"
+    )
+    res.status(200).json(offer)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
 // Route to reset offers, deleting all current offers and uploading new ones
 offersRouter.post(
   `/reset-offers/${process.env.RESET}`,
